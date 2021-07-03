@@ -125,7 +125,7 @@ public class BikeRide {
     // Hint: see Arrays.stream(...)
     //
     public DoubleStream heartRateStream() {
-        return DoubleStream.empty();
+    	return DoubleStream.of(heartRate);
     }
 
     // @ToDo:
@@ -134,7 +134,7 @@ public class BikeRide {
     // stream of the specified values
     //
     public DoubleStream velocityStream() {
-        return DoubleStream.empty();
+        return DoubleStream.of(velocity);
     }
 
     // @ToDo:
@@ -142,7 +142,7 @@ public class BikeRide {
     // Implement this method so it returns a
     // stream of the specified values
     public DoubleStream gradeStream() {
-        return DoubleStream.empty();
+    	return DoubleStream.of(grade);
     }
 
     // @ToDo:
@@ -150,7 +150,7 @@ public class BikeRide {
     // Implement this method so it returns a
     // stream of the specified values
     public DoubleStream altitudeStream() {
-        return DoubleStream.empty();
+    	return DoubleStream.of(altitude);
     }
 
     // @ToDo:
@@ -158,7 +158,7 @@ public class BikeRide {
     // Implement this method so it returns a
     // stream of the specified values
     public Stream<LatLng> coordinateStream() {
-        return Stream.empty();
+    	return Stream.of(coordinates);
     }
 
 
@@ -171,7 +171,11 @@ public class BikeRide {
     // data arrays (e.g., heartRate, velocity, etc.)
     //
     public Stream<DataFrame> fusedFramesStream() {
-        return Stream.empty();
+    	DataFrame[] array = new DataFrame[heartRate.length];
+    	for(int i=0;i<heartRate.length;i++) {
+    		array[i] = new DataFrame(coordinates[i], grade[i], altitude[i], velocity[i], heartRate[i]);
+    	}
+        return Stream.of(array);
     }
 
 
